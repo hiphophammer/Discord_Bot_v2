@@ -10,14 +10,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Docker login
-      env:
-        DOCKER_USER: ${{secrets.DOCKER_USER}}
-        DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+    - name: Login
       run:
-        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+        docker login --username=_ --password=${secrets.YOUR_TOKEN} registry.heroku.com
     - name: Build the Docker image
-      run: docker build . -t ${{secrets.DOCKER_USER}}/discord_bot:latest
+      run: docker build . -t registry.heroku.com/${secrets.HEROKU_APP_NAME}/web
 
-    - name: Push to Docker Hub
-      run: docker push ${{secrets.DOCKER_USER}}/discord_bot:latest
+    - name: Push to Heroku
+      run: docker push registry.heroku.com/${secrets.HEROKU_APP_NAME}/web
