@@ -17,7 +17,7 @@ jobs:
       run:
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name: Build the Docker image
-      run: docker build . -t discord_bot
+      run: docker build . -t discord_bot_latest
 
     - name: Push to Docker Hub
-      run: docker push ${{secrets.DOCKER_USER}}/discord_bot:latest
+      run: docker push ${{secrets.DOCKER_USER}}/discord_bot:discord_bot_latest
