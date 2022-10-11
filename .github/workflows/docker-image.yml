@@ -18,9 +18,9 @@ jobs:
       run:
         docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com
     - name: Build the Docker image
-      run: docker build . -t registry.heroku.com/$APP_NAME/web
+      run: docker build . -t registry.heroku.com/$APP_NAME/worker
 
     - name: Push to Heroku
-      run: heroku container:push web -a $APP_NAME
+      run: heroku container:push worker -a $APP_NAME
     - name: Release
-      run: heroku container:release web -a $APP_NAME
+      run: heroku container:release worker -a $APP_NAME
