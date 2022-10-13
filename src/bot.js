@@ -35,4 +35,4 @@ client.on('shardError', error => {
 });
 
 
-// client.login(process.env.MY_TOKEN);
+client.login(process.env.MY_TOKEN);
