@@ -27,7 +27,7 @@ client.on('ready', () => {
 
 client.on('messageCreate', msg => {
     if (msg.author.bot) return; // don't react to messages from bots
-    console.log("Received: " + msg + "!");
+    console.log("Received: " + msg.content + "!");
 });
 
 client.on('shardError', error => {
