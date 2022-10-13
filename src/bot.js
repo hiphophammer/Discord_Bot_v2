@@ -30,4 +30,9 @@ client.on('messageCreate', msg => {
     console.log("Received: " + msg + "!");
 });
 
+client.on('shardError', error => {
+	console.error('A websocket connection encountered an error:', error);
+});
+
+
 // client.login(process.env.MY_TOKEN);
