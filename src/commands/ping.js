@@ -1,7 +1,10 @@
-exports.run = (client, msg, args) => {
-    msg.reply(`${client.ws.ping}ms`);
-};
+const { SlashCommandBuilder } = require('discord.js');
 
-exports = {
-    name: 'ping'
+module.exports = {
+    data: new SlashCommandBuilder()
+        .setName('ping')
+        .setDescription('Replies with Pong!'),
+    async execute(interaction) {
+        await interaction.reply('Pong');
+    },
 };
