@@ -4,7 +4,7 @@ import { fs } from 'node:fs';
 import { path } from 'node:path';
 import { Client as DiscordClient, GatewayIntentBits } from 'discord.js'
 
-import { SetupNewClient } from './sql/schema-setup.js'
+import { SetupNewClient, HandleSchema } from './sql/schema-setup.js'
 
 const discordClient = new DiscordClient(
     { intents: [
@@ -15,14 +15,9 @@ const discordClient = new DiscordClient(
 
 const sqlClient = SetupNewClient( );
 sqlClient.connect();
+// HandleSchema( sqlClient );
 
-// client_sql.query( 'SELECT table_schema,table_name FROM information_schema.tables', ( err, res ) => {
-//     if (err) throw err;
-//     for (let row of res.rows) {
-//         console.log(JSON.stringify(row));
-//     }
-//     client_sql.end;
-// });
+
 
 // client.commands = new Discord.Collection()
 // const commands_path = path.join(__dirname, 'commands');

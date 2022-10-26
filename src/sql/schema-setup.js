@@ -1,6 +1,6 @@
 import { Client } from 'pg'
 
-const SetupNewClient = (  ) => {
+const SetupNewClient = ( ) => {
     return (
         new Client({
             connectionString: process.env.DATABASE_URL,
@@ -11,4 +11,10 @@ const SetupNewClient = (  ) => {
     );
 }
 
-export { SetupNewClient };
+const HandleSchema = ( client ) => {
+    client_sql.query( 'SELECT table_schema,table_name FROM information_schema.tables', ( err, res ) => {
+        if (err) throw err;
+    });
+}
+
+export { SetupNewClient, HandleSchema };
