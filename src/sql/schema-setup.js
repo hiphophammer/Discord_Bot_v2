@@ -14,6 +14,7 @@ const SetupNewClient = ( ) => {
 const HandleSchema = ( client ) => {
     client_sql.query( 'SELECT table_schema,table_name FROM information_schema.tables', ( err, res ) => {
         if (err) throw err;
+        
     });
 }
 
