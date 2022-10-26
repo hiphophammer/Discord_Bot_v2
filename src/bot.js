@@ -1,7 +1,7 @@
 require( 'dotenv' ).config( );
 
-import { fs } from 'node:fs';
-import { path } from 'node:path';
+const fs = require( 'fs' );
+const path = require( 'path' );
 import { Client as DiscordClient, GatewayIntentBits, Collection } from 'discord.js'
 
 import { SetupNewClient, HandleSchema } from './sql/schema-setup.js'
@@ -54,5 +54,3 @@ discordClient.login( process.env.MY_TOKEN );
 //     console.log('Unhandled rejection at ', promise, `reason: ${err.message}`);
 //     process.exit(1);
 // });
-
-// client.login(process.env.MY_TOKEN);
