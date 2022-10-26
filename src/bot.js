@@ -2,8 +2,9 @@ require( 'dotenv' ).config( );
 
 import { fs } from 'node:fs';
 import { path } from 'node:path';
-import { Client as SqlClient } from 'pg';
 import { Client as DiscordClient, GatewayIntentBits } from 'discord.js'
+
+import { SetupNewClient } from './sql/schema-setup.js'
 
 const discordClient = new DiscordClient(
     { intents: [
@@ -12,12 +13,7 @@ const discordClient = new DiscordClient(
         GatewayIntentBits.MessageContent
     ]});
 
-const sqlClient = new SqlClient({
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
-        rejectUnauthorized: false
-    }
-});
+const sqlClient = SetupNewClient( );
 sqlClient.connect();
 
 // client_sql.query( 'SELECT table_schema,table_name FROM information_schema.tables', ( err, res ) => {
